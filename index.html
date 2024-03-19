@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prática de Redação do Arthur</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    #container {
+      width: 90%;
+      max-width: 600px;
+      text-align: center;
+    }
+
+    #texto-modelo {
+      font-style: italic;
+      margin-top: 20px;
+    }
+
+    #texto-digitado {
+      width: 100%;
+      margin-top: 20px;
+      padding: 10px;
+      font-size: 16px;
+      border: 2px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+
+    #correcao {
+      margin-top: 10px;
+      font-size: 16px;
+      color: #333;
+    }
+
+    .correto {
+      color: #4CAF50;
+    }
+
+    .incorreto {
+      color: #f44336;
+    }
+  </style>
+</head>
+
+   
+
+<body>
+  <div id="container">
+    <h1>Prática de Redação</h1>
+    <img src="by-Arthur Tavares" alt="" width="300">
+    <p>Escreva o texto abaixo:</p>
+    <textarea id="texto-digitado" rows="10"></textarea>
+    <p id="texto-modelo">Diante do exposto, denota-se a urgência de propostas governamentais que alterem esse quadro. Portanto, cabe ao Estado - em sua função do promotor do bem-estar social - (ACAO), mediante (MEIO/MODO). Tal ação terá como finalidade (finalidade)... .Assim, à luz da perspectiva de Saramago, poderemos mitigar a cegueira moral que permeia essa questão.</p>
+    <p id="correcao"></p>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const textoOriginal = "Diante do exposto, denota-se a urgência de propostas governamentais que alterem esse quadro. Portanto, cabe ao Estado - em sua função do promotor do bem-estar social - (ACAO), mediante (MEIO/MODO). Tal ação terá como finalidade (finalidade)... .Assim, à luz da perspectiva de Saramago, poderemos mitigar a cegueira moral que permeia essa questão.".split(' ');
+      const textoDigitado = document.getElementById('texto-digitado');
+      const correcao = document.getElementById('correcao');
+
+      textoDigitado.addEventListener('input', function() {
+        const palavrasDigitadas = textoDigitado.value.split(' ');
+        let correcaoHTML = '';
+
+        textoOriginal.forEach((palavraOriginal, index) => {
+          if (palavrasDigitadas[index] === palavraOriginal) {
+            correcaoHTML += `<span class="correto">${palavraOriginal}</span> `;
+          } else {
+            correcaoHTML += `<span class="incorreto">${palavrasDigitadas[index] || ''}</span> `;
+          }
+        });
+
+        correcao.innerHTML = correcaoHTML.trim();
+      });
+    });
+    
+   
+
+  </script>
+  
+</body>
+</html>
